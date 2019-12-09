@@ -1,0 +1,95 @@
+{% extends 'basic.html' %} {% block body %}
+<div class container>
+  <div class="jumbotron">
+    <h4 class="display-4">Welcome To News Times !!!!!</h4>
+    <blockquote class="blockquote text-left">
+      <p class="mb-0">{{resp.content}}</p>
+      <footer class="blockquote-footer text-left text-white">
+        <cite title="Source Title">{{resp.author}}</cite>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+
+<div class="container my-2">
+  <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-dark text-white">
+          <p>
+            <i class="fa fa-bell mr-2" aria-hidden="true"></i>Top 5 news at this
+            moment
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          {%for i in news|slice:":5"%}
+          <li class="list-group-item">
+            <strong>{{i.title}}</strong><br /><cite class="float-right"
+              ><small>{{i.name}}</small></cite
+            >
+          </li>
+          {%endfor%}
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          <h3>
+            <i class="fa fa-refresh mr-3" aria-hidden="true"></i>Trending...
+          </h3>
+        </div>
+        {%for i in news|slice:'4:5'%}
+        <img src="{{i.image}}" class="card-img-top img-thumbnail" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text">{{i.content}}</p>
+          <a
+            href="{{i.url}}"
+            target="_blank"
+            class="btn btn-outline-primary"
+            role="button"
+            >Read full news</a
+          >
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-2">
+  <div class="row">
+    {%for item in news%}
+    <div class="col-md-4">
+      <div
+        class="card shadow p-3 mb-5 bg-white rounded mx-auto"
+        style="width: 18rem;"
+      >
+        <!-- <h2 class="card-title">{{item.title}}</h2> -->
+        <img src="{{item.image}}" class="card-img-top" alt="..." />
+
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <p class="card-text">{{item.content|slice:':80'}}....</p>
+          <a
+            href="{{item.url}}"
+            target="_blank"
+            class="btn btn-outline-primary"
+            role="button"
+            >Read full news</a
+          >
+          <p class="text-muted text-lowercase mt-2">
+            <small
+              ><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
+              {{item.date|slice:':10'}}&nbsp&nbsp&nbsp{{item.date|slice:'11:19'}}</small
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{% endblock %}

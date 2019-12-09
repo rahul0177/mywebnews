@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(241, 238, 238);
+}
+.jumbotron {
+  background: url(https://images.pexels.com/photos/2086917/pexels-photo-2086917.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: whitesmoke;
+}
+.jumbotron h4 {
+  font-weight: bolder;
+}
+
+.jumbotron p {
+  font-weight: bolder;
+  font-size: 1.25rem;
+  color: white;
+}
+ {
+  border-radius: 0 !important;
+}
